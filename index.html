@@ -1,257 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>💖 A Question From My Heart</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>💖 Will You Be My Valentine?</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <style>
-        * { box-sizing: border-box; }
+<style>
+*{box-sizing:border-box}
 
-        body {
-          margin: 0;
-          height: 100vh;
-          background: radial-gradient(circle at top, #ffb6c1, #ff4d6d);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-          font-family: 'Poppins', sans-serif;
-        }
+body{
+  margin:0;
+  height:100vh;
+  background:radial-gradient(circle at top,#ffb6c1,#ff165d);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+}
 
-        .heart-bg {
-          position: fixed;
-          inset: 0;
-          pointer-events: none;
-          overflow: hidden;
-        }
+.card{
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(14px);
+  padding:48px 32px;
+  border-radius:28px;
+  text-align:center;
+  width:90%;
+  max-width:460px;
+  box-shadow:0 30px 80px rgba(0,0,0,.25);
+}
 
-        .heart-bg span {
-          position: absolute;
-          bottom: -20px;
-          font-size: 20px;
-          animation: floatUp linear infinite;
-          opacity: 0.7;
-        }
+h1{
+  font-family:'Great Vibes',cursive;
+  font-size:46px;
+  color:#fff;
+}
 
-        @keyframes floatUp {
-          from { transform: translateY(0) scale(0.8); opacity: 0; }
-          10% { opacity: 0.8; }
-          to { transform: translateY(-110vh) scale(1.4); opacity: 0; }
-        }
+p{color:#ffe6ec}
 
-        .card {
-          position: relative;
-          background: rgba(255,255,255,0.15);
-          backdrop-filter: blur(14px);
-          padding: 48px 32px;
-          border-radius: 28px;
-          text-align: center;
-          width: 90%;
-          max-width: 460px;
-          box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-          animation: cardEnter 1s ease;
-        }
+.buttons{
+  position:relative;
+  height:160px;
+  margin-top:20px;
+}
 
-        @keyframes cardEnter {
-          from { transform: translateY(40px) scale(0.9); opacity: 0; }
-          to { transform: translateY(0) scale(1); opacity: 1; }
-        }
+button{
+  padding:16px 34px;
+  font-size:16px;
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+}
 
-        h1 {
-          font-family: 'Great Vibes', cursive;
-          font-size: 46px;
-          color: #fff;
-          margin-bottom: 12px;
-        }
+#yesBtn{
+  background:linear-gradient(135deg,#ff4d6d,#ff758f);
+  color:white;
+  box-shadow:0 10px 30px rgba(255,77,109,.6);
+}
 
-        p.subtitle {
-          color: #ffe6ec;
-          font-size: 15px;
-          margin-bottom: 32px;
-        }
+#noBtn{
+  position:absolute;
+  background:white;
+  color:#ff4d6d;
+  left:50%;
+  top:90px;
+  transform:translateX(-50%);
+}
 
-        .buttons {
-          position: relative;
-          height: 160px;
-        }
+/* Celebration */
+.celebration{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#ff9a9e,#ff165d);
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  z-index:10;
+}
 
-        button {
-          padding: 16px 34px;
-          font-size: 16px;
-          border: none;
-          border-radius: 999px;
-          cursor: pointer;
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+.celebration h2{
+  font-family:'Great Vibes',cursive;
+  font-size:64px;
+  margin-bottom:10px;
+}
 
-        button:active { transform: scale(0.95); }
+.photo{
+  width:260px;
+  height:260px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+  margin:20px 0;
+}
 
-        #yesBtn {
-          background: linear-gradient(135deg, #ff4d6d, #ff758f);
-          color: #fff;
-          box-shadow: 0 10px 30px rgba(255,77,109,0.6);
-        }
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-        #noBtn {
-          position: absolute;
-          background: #fff;
-          color: #ff4d6d;
-          box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-          left: 50%;
-          top: 90px;
-          transform: translateX(-50%);
-        }
+/* Fireworks */
+.firework{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  animation:explode 1.2s ease-out forwards;
+}
 
-        .celebration {
-          position: fixed;
-          inset: 0;
-          background: radial-gradient(circle at top, #ff9a9e, #ff165d);
-          display: none;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          text-align: center;
-          color: white;
-          z-index: 10;
-        }
-
-        .celebration h2 {
-          font-family: 'Great Vibes', cursive;
-          font-size: 64px;
-          margin-bottom: 8px;
-          animation: pop 0.8s ease;
-        }
-
-        @keyframes pop {
-          from { transform: scale(0.6); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
-        }
-
-        .ring {
-          width: 140px;
-          height: 140px;
-          border-radius: 50%;
-          border: 6px solid rgba(255,255,255,0.6);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin: 20px 0;
-          animation: pulse 1.4s infinite;
-        }
-
-        @keyframes pulse {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.15); }
-          100% { transform: scale(1); }
-        }
-
-        .ring span { font-size: 64px; }
-
-        .firework {
-          position: absolute;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          animation: explode 1.1s ease-out forwards;
-        }
-
-        @keyframes explode {
-          from { transform: scale(1); opacity: 1; }
-          to { transform: scale(10); opacity: 0; }
-        }
-
-        .hint {
-          font-size: 12px;
-          color: rgba(255,255,255,0.8);
-          margin-top: 16px;
-        }
-    </style>
+@keyframes explode{
+  from{transform:scale(1);opacity:1}
+  to{transform:scale(14);opacity:0}
+}
+</style>
 </head>
+
 <body>
 
-<!-- 🎵 MUSIC -->
-<audio id="bgMusic" preload="auto">
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<div class="heart-bg" id="heartBg"></div>
-
 <div class="card">
-    <h1>Will you be my Valentine?</h1>
-    <p class="subtitle">I promise unlimited love, laughter & lifetime chocolates 🍫</p>
+  <h1>Will you be my Valentine? 💖</h1>
+  <p>Forever sounds perfect with you 🥰</p>
 
-    <div class="buttons">
-        <button id="yesBtn">Yes, obviously 💍</button>
-        <button id="noBtn">No 😏</button>
-    </div>
-
-    <div class="hint">(Try saying no… if you can 😉)</div>
+  <div class="buttons">
+    <button id="yesBtn">YES 💍</button>
+    <button id="noBtn">NO 😏</button>
+  </div>
 </div>
 
 <div class="celebration" id="celebration">
-    <h2>Kummu said YES 💖</h2>
-    <div class="ring"><span>💎</span></div>
-    <p>This just became my favorite moment ✨</p>
+  <h2>We are Valentine 💕</h2>
+
+  <div class="photo">
+    <img src="us.jpg" alt="Us Together">
+  </div>
+
+  <p>Best decision ever ✨</p>
 </div>
 
 <script>
-    const noBtn = document.getElementById('noBtn');
-    const yesBtn = document.getElementById('yesBtn');
-    const celebration = document.getElementById('celebration');
-    const heartBg = document.getElementById('heartBg');
-    const music = document.getElementById('bgMusic');
+const noBtn=document.getElementById('noBtn')
+const yesBtn=document.getElementById('yesBtn')
+const celebration=document.getElementById('celebration')
 
-    // floating hearts
-    for (let i = 0; i < 25; i++) {
-      const s = document.createElement('span');
-      s.innerText = '❤';
-      s.style.left = Math.random() * 100 + '%';
-      s.style.animationDuration = 6 + Math.random() * 6 + 's';
-      s.style.fontSize = 14 + Math.random() * 26 + 'px';
-      heartBg.appendChild(s);
+noBtn.addEventListener('mouseover',moveNo)
+noBtn.addEventListener('touchstart',moveNo)
+
+function moveNo(){
+  const x=Math.random()*70
+  const y=Math.random()*120
+  noBtn.style.left=x+'%'
+  noBtn.style.top=y+'px'
+}
+
+yesBtn.addEventListener('click',()=>{
+  celebration.style.display='flex'
+  massiveFireworks()
+})
+
+function massiveFireworks(){
+  let count=0
+  const interval=setInterval(()=>{
+    for(let i=0;i<25;i++){
+      const fw=document.createElement('div')
+      fw.className='firework'
+      fw.style.left=Math.random()*100+'%'
+      fw.style.top=Math.random()*100+'%'
+      fw.style.background=`hsl(${Math.random()*360},100%,70%)`
+      document.body.appendChild(fw)
+      setTimeout(()=>fw.remove(),1200)
     }
-
-    let noAttempts = 0;
-
-    function escapeNo() {
-      noAttempts++;
-      const padding = 10 + noAttempts * 6;
-      const x = Math.random() * (100 - padding);
-      const y = Math.random() * (100 - padding);
-
-      noBtn.style.left = x + '%';
-      noBtn.style.top = y + '%';
-      noBtn.style.transform = `rotate(${Math.random() * 20 - 10}deg)`;
-
-      if (noAttempts > 4) noBtn.innerText = 'Nice try 😜';
-      if (noAttempts > 8) noBtn.innerText = 'You can’t escape destiny 💘';
-    }
-
-    noBtn.addEventListener('mouseover', escapeNo);
-    noBtn.addEventListener('touchstart', escapeNo);
-
-    yesBtn.addEventListener('click', () => {
-      celebration.style.display = 'flex';
-      launchFireworks();
-      music.currentTime = 0;
-      music.play();
-    });
-
-    function launchFireworks() {
-      for (let i = 0; i < 40; i++) {
-        const fw = document.createElement('div');
-        fw.className = 'firework';
-        fw.style.left = Math.random() * 100 + '%';
-        fw.style.top = Math.random() * 100 + '%';
-        fw.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
-        document.body.appendChild(fw);
-        setTimeout(() => fw.remove(), 1200);
-      }
-    }
+    count++
+    if(count>6) clearInterval(interval)
+  },400)
+}
 </script>
 
 </body>
